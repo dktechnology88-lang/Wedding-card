@@ -1,0 +1,209 @@
+Style.css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a0329;
+    color: #e2c478;
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    border-bottom: 1px solid rgba(226, 196, 120, 0.3);
+    padding-bottom: 15px;
+}
+
+.section {
+    margin: 35px 0;
+}
+
+.arabic-text {
+    font-size: 1.5rem;
+    direction: rtl;
+    margin-bottom: 10px;
+}
+
+.translation {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #f3e6c4;
+}
+
+.surah {
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    margin-top: 5px;
+}
+
+.sub-title {
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.main-title {
+    font-size: 1.9rem;
+    font-weight: 600;
+    margin: 8px 0;
+}
+
+.weds {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+.tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    border-bottom: 1px dashed rgba(226, 196, 120, 0.4);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.card, .family-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #e2c478;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.card-tag {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.event-heading {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.btn, .submit-btn {
+    display: inline-block;
+    background: transparent;
+    color: #e2c478;
+    border: 1px solid #e2c478;
+    padding: 8px 12px;
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    margin: 5px 2px;
+    cursor: pointer;
+}
+
+.submit-btn {
+    width: 100%;
+    background: #e2c478;
+    color: #1a0329;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.choice-btn {
+    background: transparent;
+    border: 1px solid #e2c478;
+    color: #e2c478;
+    padding: 8px 10px;
+    margin: 5px 2px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.choice-btn.active {
+    background: #e2c478;
+    color: #1a0329;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid #e2c478;
+    color: #fff;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.family-role {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+.person-name {
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
+
+.sub-heading {
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    margin-top: 12px;
+    color: #fff;
+}
+
+.family-card p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+}
+
+.blessing-text {
+    font-style: italic;
+    font-size: 0.85rem;
+    margin: 15px 0 5px 0;
+}
+
+.audio-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #e2c478;
+    color: #1a0329;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.wish-card {
+    background: rgba(255, 255, 255, 0.06);
+    border-left: 3px solid #e2c478;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: left;
+    border-radius: 4px;
+}

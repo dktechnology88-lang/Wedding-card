@@ -1,0 +1,152 @@
+Index.Html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajaz & Haram Wedding Invitation</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Audio Player Button -->
+    <div class="audio-control" onclick="toggleAudio()">
+        <span id="audio-icon">🎵</span>
+        <audio id="bg-music" loop>
+            <source src="background-music.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="container">
+        <!-- Monogram Header -->
+        <header class="header">
+            <div class="monogram">A & H</div>
+            <div class="date-top">OCTOBER • MMXXVI</div>
+        </header>
+
+        <!-- Surah Verse -->
+        <section class="section verse-section">
+            <p class="arabic-text">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+            <p class="translation">"And among His signs is that He created for you mates from among yourselves, that you may find tranquility in them."</p>
+            <p class="surah">- SURAH AR-RUM 30:21 -</p>
+        </section>
+
+        <!-- Groom & Bride Header -->
+        <section class="section couple-section">
+            <span class="sub-title">WITH THE BLESSINGS OF ALLAH,<br>WE CORDIALLY INVITE YOU TO THE WEDDING OF</span>
+            <h1 class="main-title">Ajaz Dalkhaniya</h1>
+            <div class="weds">✦ weds ✦</div>
+            <h1 class="main-title">Haram Khatri</h1>
+            <p class="tagline">Your presence will make our happiness more complete.</p>
+        </section>
+
+        <!-- Events Section (Nikah & Walima) -->
+        <section class="section event-details">
+            <h2 class="section-title">THE CELEBRATIONS</h2>
+
+            <!-- Nikah Card -->
+            <div class="card">
+                <div class="card-tag">01 • NIKAH</div>
+                <h3 class="event-heading">Nikah Ceremony</h3>
+                <p><strong>DATE:</strong> Saturday, 10 October 2026</p>
+                <p><strong>TIME:</strong> At 8:00 PM</p>
+                <p><strong>VENUE:</strong> Santacruz, Mumbai</p>
+                <div class="button-group">
+                    <a href="https://maps.google.com/?q=Santacruz+Mumbai" target="_blank" class="btn">LOCATION (MUMBAI)</a>
+                </div>
+            </div>
+
+            <!-- Walima Card -->
+            <div class="card">
+                <div class="card-tag">02 • WALIMA</div>
+                <h3 class="event-heading">Dawat-e-Walima</h3>
+                <p><strong>DATE:</strong> Tuesday, 13 October 2026</p>
+                <p><strong>TIME:</strong> At 8:00 PM Onwards</p>
+                <p><strong>VENUE:</strong> Maharaja Banquet Hall, Silvassa Road, Near Haria Park, Opposite HP Petrol Pump, Chanod Colony, Dungra, Vapi, Gujarat - 396 195.</p>
+                <div class="button-group">
+                    <a href="https://maps.google.com/?q=Maharaja+Banquet+Hall+Silvassa+Road+Vapi" target="_blank" class="btn">GOOGLE MAPS LOCATION</a>
+                    <a href="tel:+919662750766" class="btn">CALL: +91 96627 50766</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Form -->
+        <section class="section rsvp-section">
+            <h2 class="section-title">KINDLY RESPOND</h2>
+            <div class="card rsvp-card">
+                <h3>Will you join us?</h3>
+                <p>Please confirm your presence</p>
+
+                <form id="rsvpForm">
+                    <div class="radio-group">
+                        <button type="button" class="choice-btn active" onclick="selectRSVP(this)">Yes! I will be there</button>
+                        <button type="button" class="choice-btn" onclick="selectRSVP(this)">Sorry, I can't attend</button>
+                    </div>
+                    <input type="text" id="guestName" placeholder="Your Name" required>
+                    <button type="submit" class="submit-btn">SEND RSVP</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Our Families Section -->
+        <section class="section family-section">
+            <h2 class="section-title">OUR FAMILIES</h2>
+            
+            <div class="family-card">
+                <h3 class="family-role">THE GROOM</h3>
+                <h2 class="person-name">Ajaz Dalkhaniya</h2>
+                <p class="relation">Son of</p>
+                <p class="parent-names">Mr. Salim Dalkhaniya & Mrs. Shamim Dalkhaniya</p>
+                
+                <h4 class="sub-heading">SIBLINGS</h4>
+                <p>Riyaz • Ayaz • Imtiyaz</p>
+                <p>Marhooma Nafisa Bano • Samrin Bano • Rabiya Bano</p>
+
+                <h4 class="sub-heading">THE LITTLE ONES</h4>
+                <p>Ruhaan • Ahmad • Azlaan • Inaya</p>
+
+                <h4 class="sub-heading">GRAND PARENTS</h4>
+                <p>Janab Marhoom Ismail Dalkhaniya</p>
+                <p>Marhooma Rabiya Dalkhaniya</p>
+            </div>
+
+            <div class="family-card border-top-glow">
+                <h3 class="family-role">THE BRIDE</h3>
+                <h2 class="person-name">Haram Khatri</h2>
+                <p class="relation">Daughter of</p>
+                <p class="parent-names">Marhoom Javed Khatri</p>
+            </div>
+
+            <div class="inviter-details">
+                <p class="blessing-text">May Allah bless this union and fill your life with happiness, love and barakah.</p>
+                <p class="from-text">With Love From:</p>
+                <h4>Dalkhaniya Family, Relatives & Friends</h4>
+                <p class="contact-person">From: Mr. Riyaz Dalkhaniya<br>Daman, Chala, Vapi, Dist. Valsad (Guj.)<br>Mob.: +91 9662750766</p>
+            </div>
+        </section>
+
+        <!-- Guest Wishes Wall -->
+        <section class="section wishes-section">
+            <h2 class="section-title">WISHES & BLESSINGS</h2>
+            <p class="subtitle">Send your heartfelt wishes & blessings</p>
+
+            <form id="wishForm" class="wish-form">
+                <input type="text" id="wishAuthor" placeholder="Your Name" required>
+                <textarea id="wishMessage" placeholder="Write your wishes for Ajaz & Haram..." required></textarea>
+                <button type="submit" class="submit-btn">SEND WISHES</button>
+            </form>
+
+            <div class="wishes-list" id="wishesContainer">
+                <div class="wish-card">
+                    <h5>Dalkhaniya Family</h5>
+                    <p>"May Allah bless both of you with endless love and happiness!"</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
