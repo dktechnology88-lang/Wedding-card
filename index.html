@@ -17,7 +17,7 @@
 </head>
 <body>
 
-    <!-- 1. REAL ENVELOPE OPENING ANIMATION -->
+    <!-- 1. ENVELOPE OPENING SCREEN -->
     <div id="envelope-wrapper" class="envelope-wrapper" onclick="openEnvelope()">
         <div class="envelope">
             <div class="flap"></div>
@@ -36,7 +36,7 @@
     </div>
 
     <!-- 2. MAIN WEBSITE CARD -->
-    <div id="main-content" class="main-wrapper hidden">
+    <div id="main-content" class="main-wrapper hidden" style="display: none;">
 
         <audio id="bg-music" loop>
             <source src="background-music.mp3" type="audio/mpeg">
@@ -55,13 +55,13 @@
             <section class="section verse-section">
                 <p class="arabic-text">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
                 <p class="translation">"And among His signs is that He created for you mates from among yourselves, that you may find tranquility in them"</p>
-                <p class="surah">— Surah Ar-Rum 30:21 —</p>
+                <p class="surah">— SURAH AR-RUM 30:21 —</p>
             </section>
 
             <div class="gold-line"></div>
 
             <!-- Guest Greeting -->
-            <div id="guest-welcome-box" class="guest-welcome-card hidden">
+            <div id="guest-welcome-box" class="guest-welcome-card" style="display: none;">
                 <p id="guest-name-display" class="guest-text">Dear Guest,</p>
             </div>
 
@@ -146,7 +146,7 @@
                 </div>
             </section>
 
-            <!-- Family Details Cards -->
+            <!-- Family Details Cards with Proper Spacing -->
             <section class="section family-section">
                 <div class="family-card">
                     <h3 class="family-role">THE GROOM</h3>
@@ -156,6 +156,8 @@
 
                     <h4 class="sub-heading">SIBLINGS</h4>
                     <p class="detail-text">Riyaz • Ayaz • Imtiyaz</p>
+
+                    <h4 class="sub-heading">SISTERS</h4>
                     <p class="detail-text">Marhooma Nafisa Bano • Samrin Bano • Rabiya Bano</p>
 
                     <h4 class="sub-heading">THE LITTLE ONES</h4>
