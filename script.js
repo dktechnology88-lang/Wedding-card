@@ -1,69 +1,85 @@
-// URL se Guest ka Name Read karna (?guest=Faisal)
+// URL se mehmaan ka naam nikalna (?to=GuestName)
 document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
-    const guestName = urlParams.get('guest');
+    const guestName = urlParams.get('to');
 
     if (guestName) {
         const formattedName = decodeURIComponent(guestName);
-        document.getElementById('guest-name-display').innerText = formattedName;
-        document.getElementById('guest-welcome-box').classList.remove('hidden');
-        document.getElementById('guest-greeting-envelope').innerText = `Dear ${formattedName}`;
+        document.getElementById("guest-name-display").innerText = "Dear " + formattedName + ",";
+        document.getElementById("guest-welcome-box").classList.remove("hidden");
     }
 });
 
-// Envelope Opening Screen & Music Play
+// Envelope Opening Function
 function openEnvelope() {
-    const envScreen = document.getElementById('envelope-screen');
-    const mainContent = document.getElementById('main-content');
-    const audio = document.getElementById('bg-music');
-    const icon = document.getElementById('audio-icon');
+    const wrapper = document.getElementById("envelope-wrapper");
+    const mainContent = document.getElementById("main-content");
+    const audio = document.getElementById("bg-music");
 
-    envScreen.classList.add('open-anim');
+    // 1. Envelope animation start
+    wrapper.classList.add("open");
 
-    setTimeout(() => {
-        envScreen.style.display = 'none';
-        mainContent.classList.remove('hidden');
-        
+    // 2. Play Background Music
+    if (audio) {
         audio.play().then(() => {
-            icon.textContent = "❚❚";
+            document.getElementById("audio-icon").innerText = "❚❚";
         }).catch(() => {
-            console.log("Audio play blocked by browser policy");
+            console.log("Audio play blocked by browser.");
         });
-    }, 700);
+    }
+
+    // 3. Envelope fade out and show main website
+    setTimeout(() => {
+        wrapper.classList.add("fade-out");
+        setTimeout(() => {
+            wrapper.style.display = "none";
+            mainContent.classList.remove("hidden");
+        }, 800);
+    }, 1200);
 }
 
-// Audio Toggle Button
+// Audio Toggle (Play / Pause)
 function toggleAudio() {
     const audio = document.getElementById("bg-music");
     const icon = document.getElementById("audio-icon");
+
     if (audio.paused) {
         audio.play();
-        icon.textContent = "❚❚";
+        icon.innerText = "❚❚";
     } else {
         audio.pause();
-        icon.textContent = "▶";
+        icon.innerText = "▶";
     }
 }
 
-// WhatsApp Share Functionality
+// WhatsApp Share
 function shareOnWhatsApp() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentGuest = urlParams.get('guest') || '';
-    
-    let shareText = `✨ *WEDDING INVITATION* ✨\n\n`;
-    if(currentGuest) {
-        shareText += `Dear *${decodeURIComponent(currentGuest)}*,\n\n`;
-    }
-    shareText += `We cordially invite you to celebrate the wedding of\n*Ajaz Dalkhaniya* ✦ weds ✦ *Haram Khatri*\n\n📅 *Nikah:* Saturday, 10 October 2026 (Mumbai)\n📅 *Dawat-e-Walima:* Tuesday, 13 October 2026 (Vapi)\n\nView your personal invitation here:\n👇\n${window.location.href}`;
-
-    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
-    window.open(whatsappUrl, '_blank');
+    const url = window.location.href;
+    const text = `You are cordially invited to the wedding of Ajaz & Haram! ✦\n\nClick to view invitation:\n${url}`;
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
 }
 
-// RSVP Form
-document.getElementById('rsvpForm')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Thank you! Your blessings have been sent.');
-    document.getElementById('guestName').value = '';
-    document.getElementById('wishMessage').value = '';
+// TOUCH / CLICK SPARKLE STAR EFFECT
+document.addEventListener("click", function (e) {
+    createSparkle(e.clientX, e.clientY);
 });
+
+document.addEventListener("touchstart", function (e) {
+    if (e.touches.length > 0) {
+        createSparkle(e.touches[0].clientX, e.touches[0].clientY);
+    }
+});
+
+function createSparkle(x, y) {
+    const star = document.createElement("div");
+    star.className = "sparkle-star";
+    star.innerHTML = "✦";
+    star.style.left = x + "px";
+    star.style.top = y + "px";
+
+    document.body.appendChild(star);
+
+    setTimeout(() => {
+        star.remove();
+    }, 800);
+}
