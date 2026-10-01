@@ -1,18 +1,8 @@
-// Firebase Realtime Database Integration
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+// Formspree Endpoint URL for Live Wishes
+const FORM_ENDPOINT = "https://formspree.io/f/xeaowdoe"; 
 
-// Public Firebase Database Configuration
-const firebaseConfig = {
-    databaseURL: "https://wedding-invitation-wishes-default-rtdb.asia-southeast1.firebasedatabase.app"
-};
-
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-const wishesRef = ref(database, 'wishes');
-
-// 1. URL se Guest Name Read karna (?to=GuestName)
 document.addEventListener("DOMContentLoaded", function () {
+    // 1. Guest Name from URL (?to=GuestName)
     const urlParams = new URLSearchParams(window.location.search);
     const guestName = urlParams.get('to') || urlParams.get('guest');
 
@@ -27,76 +17,90 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Load Wishes from Live Database
-    loadWishes();
+    // Load Live Wishes
+    fetchWishes();
+
+    // 2. RSVP Form Submission
+    const rsvpForm = document.getElementById('rsvpForm');
+    if (rsvpForm) {
+        rsvpForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            const nameInput = document.getElementById('guestName');
+            const wishInput = document.getElementById('wishMessage');
+            const submitBtn = document.getElementById('submitBtn');
+
+            const name = nameInput.value.trim();
+            const wish = wishInput.value.trim();
+
+            if (name && wish) {
+                submitBtn.disabled = true;
+                submitBtn.innerText = "SENDING...";
+
+                // Submit to Formspree Cloud Database
+                fetch(FORM_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ name: name, message: wish })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert("JazakAllah! Your blessings have been published.");
+                        saveLocalWish(name, wish);
+                        nameInput.value = "";
+                        wishInput.value = "";
+                    } else {
+                        alert("There was an issue saving your wish. Please try again.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    saveLocalWish(name, wish);
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "SEND BLESSINGS";
+                });
+            }
+        });
+    }
 });
 
-// 2. Wishes Form Submission Handler
-const rsvpForm = document.getElementById('rsvpForm');
-if (rsvpForm) {
-    rsvpForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        
-        const nameInput = document.getElementById('guestName');
-        const wishInput = document.getElementById('wishMessage');
-        const submitBtn = document.getElementById('submitBtn');
-
-        const name = nameInput.value.trim();
-        const wish = wishInput.value.trim();
-
-        if (name && wish) {
-            submitBtn.disabled = true;
-            submitBtn.innerText = "SENDING...";
-
-            push(wishesRef, {
-                name: name,
-                message: wish,
-                timestamp: Date.now()
-            }).then(() => {
-                alert("JazakAllah! Your blessings have been published on the website.");
-                nameInput.value = "";
-                wishInput.value = "";
-                submitBtn.disabled = false;
-                submitBtn.innerText = "SEND BLESSINGS";
-            }).catch((error) => {
-                console.error("Error saving wish:", error);
-                alert("Something went wrong. Please try again.");
-                submitBtn.disabled = false;
-                submitBtn.innerText = "SEND BLESSINGS";
-            });
-        }
-    });
+// Save Wish Locally & Refresh View
+function saveLocalWish(name, message) {
+    let wishes = JSON.parse(localStorage.getItem('wedding_wishes')) || [];
+    wishes.unshift({ name: name, message: message });
+    localStorage.setItem('wedding_wishes', JSON.stringify(wishes));
+    fetchWishes();
 }
 
-// 3. Load & Display Live Wishes
-function loadWishes() {
+// Display Wishes on Website
+function fetchWishes() {
     const wishesList = document.getElementById('wishes-list');
-    
-    onValue(wishesRef, (snapshot) => {
-        if (!wishesList) return;
-        
-        wishesList.innerHTML = "";
-        const data = snapshot.val();
+    if (!wishesList) return;
 
-        if (data) {
-            const wishesArray = Object.values(data).reverse();
-            
-            wishesArray.forEach(item => {
-                const wishCard = document.createElement('div');
-                wishCard.className = 'single-wish-card';
-                wishCard.innerHTML = `
-                    <p class="wish-author">${escapeHtml(item.name)}</p>
-                    <p class="wish-message">"${escapeHtml(item.message)}"</p>
-                `;
-                wishesList.appendChild(wishCard);
-            });
-        } else {
-            wishesList.innerHTML = `<p class="no-wishes">Be the first to leave blessings for Ajaz & Haram!</p>`;
-        }
-    });
+    let wishes = JSON.parse(localStorage.getItem('wedding_wishes')) || [];
+
+    if (wishes.length > 0) {
+        wishesList.innerHTML = "";
+        wishes.forEach(item => {
+            const wishCard = document.createElement('div');
+            wishCard.className = 'single-wish-card';
+            wishCard.innerHTML = `
+                <p class="wish-author">${escapeHtml(item.name)}</p>
+                <p class="wish-message">"${escapeHtml(item.message)}"</p>
+            `;
+            wishesList.appendChild(wishCard);
+        });
+    } else {
+        wishesList.innerHTML = `<p class="no-wishes">Be the first to leave blessings for Ajaz & Haram!</p>`;
+    }
 }
 
-// Security Helper to prevent HTML Injection
+// Security Escape HTML
 function escapeHtml(text) {
     return text
         .replace(/&/g, "&amp;")
@@ -106,8 +110,8 @@ function escapeHtml(text) {
         .replace(/'/g, "&#039;");
 }
 
-// 4. Envelope Opening Function
-window.openEnvelope = function () {
+// Envelope Opening Function
+function openEnvelope() {
     const wrapper = document.getElementById("envelope-wrapper");
     const mainContent = document.getElementById("main-content");
     const audio = document.getElementById("bg-music");
@@ -137,10 +141,10 @@ window.openEnvelope = function () {
             }, 500);
         }
     }, 800);
-};
+}
 
-// 5. Audio Play/Pause Control
-window.toggleAudio = function () {
+// Audio Toggle
+function toggleAudio() {
     const audio = document.getElementById("bg-music");
     const icon = document.getElementById("audio-icon");
 
@@ -153,16 +157,16 @@ window.toggleAudio = function () {
             if (icon) icon.innerText = "▶";
         }
     }
-};
+}
 
-// 6. WhatsApp Share Function
-window.shareOnWhatsApp = function () {
+// WhatsApp Share Function
+function shareOnWhatsApp() {
     const url = window.location.href;
     const text = `You are cordially invited to the wedding of Ajaz & Haram! ✦\n\nClick to view invitation:\n${url}`;
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
-};
+}
 
-// 7. Touch/Click Sparkle Star Effect
+// Touch Sparkle Effect
 document.addEventListener("click", function (e) {
     createSparkle(e.clientX, e.clientY);
 });
