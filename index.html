@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajaz & Haram Wedding Invitation</title>
+    <title>Ajaz & Haram — Wedding Invitation</title>
+
+    <!-- WhatsApp & Social Media Preview Meta Tags (For Image & Title) -->
+    <meta property="og:title" content="Ajaz & Haram — Wedding Invitation" />
+    <meta property="og:description" content="With the blessings of Allah, you are cordially invited to celebrate our wedding." />
+    <meta property="og:image" content="https://dktechnology88-lang.github.io/Wedding-card/preview.jpg" />
+    <meta property="og:type" content="website" />
+
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. ENVELOPE OPENING ANIMATION SCREEN -->
+    <!-- ENVELOPE OPENING ANIMATION SCREEN -->
     <div id="envelope-screen" class="envelope-wrapper" onclick="openEnvelope()">
         <div class="envelope-card">
             <div class="envelope-border">
+                <p id="guest-greeting-envelope" class="env-guest-name"></p>
                 <p class="env-couple">AJAZ DALKHANIYA</p>
                 <div class="gold-wax-seal">
                     <span>A&H</span>
@@ -26,7 +34,7 @@
         </div>
     </div>
 
-    <!-- 2. MAIN WEDDING WEBSITE (Hidden initially) -->
+    <!-- MAIN WEDDING WEBSITE -->
     <div id="main-content" class="main-wrapper hidden">
 
         <audio id="bg-music" loop>
@@ -40,6 +48,12 @@
                 <div class="header-star">✦</div>
                 <div class="date-top">OCTOBER • MMXXVI</div>
             </header>
+
+            <!-- Personalized Guest Welcome Note -->
+            <div id="guest-welcome-box" class="guest-welcome-card hidden">
+                <p class="guest-text">Dear <span id="guest-name-display">Guest</span>,</p>
+                <p class="guest-sub">You are warmly invited to the wedding of Ajaz & Haram.</p>
+            </div>
 
             <!-- Bismillah & Surah -->
             <section class="section verse-section">
@@ -81,7 +95,7 @@
                         </div>
 
                         <div class="three-btn-grid">
-                            <a href="https://maps.google.com/?q=Santacruz+Mumbai" target="_blank" class="grid-btn">LOCATION</a>
+                            <a href="https://share.google/3SUvwNdb2fxz88240" target="_blank" class="grid-btn">LOCATION</a>
                             <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ajaz+%26+Haram+Nikah&dates=20261010T143000Z/20261010T183000Z&location=Santacruz+Mumbai" target="_blank" class="grid-btn">GOOGLE CAL</a>
                             <a href="#" class="grid-btn">APPLE CAL</a>
                         </div>
@@ -169,11 +183,11 @@
             </section>
         </div>
 
-        <!-- Floating Bottom Buttons -->
+        <!-- Floating Bottom Controls -->
         <div class="bottom-controls">
-            <a href="https://api.whatsapp.com/send?text=You%20are%20cordially%20invited%20to%20the%20wedding%20of%20Ajaz%20%26%20Haram!%20Check%20details%20here:%20https://dktechnology88-lang.github.io/Wedding-card/" target="_blank" class="float-btn wa-btn">
+            <div class="float-btn wa-btn" onclick="shareOnWhatsApp()">
                 <span>💬</span>
-            </a>
+            </div>
             <div class="float-btn audio-btn" onclick="toggleAudio()">
                 <span id="audio-icon">▶</span>
             </div>
