@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajaz & Haram — Wedding Invitation</title>
 
-    <!-- Social Preview Metadata -->
-    <meta property="og:title" content="Ajaz & Haram — Wedding Invitation" />
-    <meta property="og:description" content="With the blessings of Allah, you are cordially invited to celebrate our wedding." />
+    <!-- Social Preview Metadata (WhatsApp & Social Media Preview) -->
+    <meta property="og:site_name" content="Ajaz & Haram Wedding Invitation" />
+    <meta property="og:title" content="Ajaz Dalkhaniya & Haram Khatri — Wedding Invitation" />
+    <meta property="og:description" content="With the blessings of Allah, you are cordially invited to celebrate our wedding. Click to view invitation." />
     <meta property="og:image" content="https://dktechnology88-lang.github.io/Wedding-card/preview.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:type" content="website" />
 
-    <!-- Google Fonts (Playfair Display for Reference Font Style) -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -187,15 +191,24 @@
                 </div>
             </section>
 
-            <!-- RSVP Form Section -->
+            <!-- RSVP Form Section & Live Wishes Display -->
             <section class="section rsvp-section">
                 <div class="event-card rsvp-card">
                     <h3 class="card-event-title" style="text-align: center; margin-top: 15px;">RSVP & Wishes</h3>
-                    <form id="rsvpForm" onsubmit="event.preventDefault(); alert('JazakAllah! Your blessings have been sent.');">
+                    
+                    <form id="rsvpForm">
                         <input type="text" id="guestName" placeholder="Your Name" required>
                         <textarea id="wishMessage" placeholder="Write your blessings..." required></textarea>
-                        <button type="submit" class="submit-btn">SEND BLESSINGS</button>
+                        <button type="submit" class="submit-btn" id="submitBtn">SEND BLESSINGS</button>
                     </form>
+
+                    <!-- Live Wishes Display -->
+                    <div class="wishes-container">
+                        <h4 class="wishes-heading">✦ BLESSINGS & WISHES ✦</h4>
+                        <div id="wishes-list" class="wishes-list">
+                            <p class="loading-text">Loading wishes...</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -213,6 +226,7 @@
 
     </div>
 
-    <script src="script.js"></script>
+    <!-- Script File Linked as Module for Firebase -->
+    <script type="module" src="script.js"></script>
 </body>
 </html>
