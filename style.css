@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap');
 
 * {
     margin: 0;
@@ -6,7 +6,6 @@
     box-sizing: border-box;
 }
 
-/* EMERALD GREEN & ROSE GOLD THEME BACKGROUND */
 body {
     background: #041a14 !important;
     background-image: radial-gradient(circle at center, #0a3328 0%, #020d0a 100%) !important;
@@ -20,7 +19,7 @@ body {
     display: none !important;
 }
 
-/* 1. ENVELOPE OPENING SCREEN (EMERALD GOLD) */
+/* ENVELOPE SCREEN */
 .envelope-wrapper {
     position: fixed;
     top: 0;
@@ -148,7 +147,7 @@ body {
     opacity: 0;
 }
 
-/* 2. MAIN WEBSITE DESIGN (EMERALD GREEN) */
+/* MAIN CONTENT CONTAINER */
 .main-wrapper {
     max-width: 480px;
     margin: 0 auto;
@@ -169,41 +168,30 @@ body {
     padding-bottom: 10px;
 }
 
-/* VERSE & AYAT SECTION */
-.verse-section {
+.bismillah-section {
     text-align: center;
-    margin-bottom: 30px;
-    padding: 0 10px;
+    margin-bottom: 25px;
 }
 
 .arabic-text {
-    font-size: 26px;
+    font-size: 28px;
     color: #ffffff;
-    margin-bottom: 18px;
-    line-height: 1.8;
+    margin-bottom: 10px;
     direction: rtl;
 }
 
-.translation {
+.bismillah-translation {
     font-family: 'Montserrat', sans-serif;
     font-style: italic;
-    font-size: 13px;
+    font-size: 12px;
     color: #e8d7ab;
-    line-height: 1.7;
-    margin-bottom: 12px;
-}
-
-.surah {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: #c5a059;
 }
 
 .gold-line {
     width: 60%;
     height: 1px;
     background: linear-gradient(90deg, transparent, #c5a059, transparent);
-    margin: 30px auto;
+    margin: 25px auto;
 }
 
 .guest-welcome-card {
@@ -212,29 +200,33 @@ body {
 }
 
 .guest-text {
-    font-family: 'Great Vibes', cursive;
-    font-size: 32px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 28px;
     color: #e2c478;
 }
 
+/* COUPLE NAMES WITH EXACT REFERENCE FONT (Playfair Display Italic) */
 .couple-section {
     text-align: center;
     margin: 35px 0 25px;
 }
 
 .calligraphy-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 48px;
-    color: #ffffff;
-    font-weight: normal;
+    font-family: 'Playfair Display', serif !important;
+    font-style: italic !important;
+    font-size: 42px !important;
+    color: #ffffff !important;
+    font-weight: 400 !important;
     text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     margin: 10px 0;
 }
 
 .weds {
-    font-family: 'Great Vibes', cursive;
-    font-size: 34px;
-    color: #e2c478;
+    font-family: 'Playfair Display', serif !important;
+    font-style: italic !important;
+    font-size: 30px !important;
+    color: #e2c478 !important;
     margin: 8px 0;
 }
 
@@ -319,7 +311,9 @@ body {
 }
 
 .card-event-title {
-    font-size: 22px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 26px;
     color: #ffffff;
     margin-bottom: 18px;
 }
@@ -371,7 +365,7 @@ body {
     color: #020d0a;
 }
 
-/* FAMILY DETAILS SECTION WITH SPACING */
+/* FAMILY DETAILS SECTION */
 .family-section {
     margin-top: 45px;
 }
@@ -393,9 +387,10 @@ body {
 }
 
 .calligraphy-name {
-    font-family: 'Great Vibes', cursive;
-    font-size: 36px;
-    color: #ffffff;
+    font-family: 'Playfair Display', serif !important;
+    font-style: italic !important;
+    font-size: 34px !important;
+    color: #ffffff !important;
     margin: 8px 0 14px 0;
 }
 
@@ -426,6 +421,27 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin-top: 6px;
     line-height: 1.6;
+}
+
+.verse-section {
+    text-align: center;
+    margin: 30px 0;
+    padding: 0 10px;
+}
+
+.translation {
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #e8d7ab;
+    line-height: 1.7;
+    margin-bottom: 8px;
+}
+
+.surah {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #c5a059;
 }
 
 .inviter-details {
