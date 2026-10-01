@@ -17,25 +17,25 @@
 </head>
 <body>
 
-    <!-- 1. ENVELOPE OPENING SCREEN -->
-    <div id="envelope-screen" class="envelope-wrapper" onclick="openEnvelope()">
-        <div class="envelope-card">
-            <div class="envelope-border">
-                <p id="guest-greeting-envelope" class="env-guest-name">Dear Guest</p>
-                <p class="env-couple">AJAZ DALKHANIYA</p>
-                <div class="gold-wax-seal">
-                    <span>A&H</span>
+    <!-- 1. REAL ENVELOPE OPENING ANIMATION -->
+    <div id="envelope-wrapper" class="envelope-wrapper" onclick="openEnvelope()">
+        <div class="envelope">
+            <div class="flap"></div>
+            <div class="pocket"></div>
+            <div class="letter">
+                <div class="letter-content">
+                    <p class="env-couple">A & H</p>
+                    <p class="env-sub">October 2026</p>
                 </div>
-                <p class="env-couple">HARAM KHATRI</p>
-                <p class="env-sub">Wedding Invitation • October 2026</p>
             </div>
-            <div class="tap-to-open">
-                <span class="line"></span> TAP TO OPEN <span class="line"></span>
+            <div class="wax-seal">
+                <span>A&H</span>
             </div>
+            <div class="tap-text">✦ TAP TO OPEN ✦</div>
         </div>
     </div>
 
-    <!-- 2. MAIN WEBSITE -->
+    <!-- 2. MAIN WEBSITE CARD -->
     <div id="main-content" class="main-wrapper hidden">
 
         <audio id="bg-music" loop>
@@ -46,33 +46,43 @@
 
             <!-- Top Header Monogram -->
             <header class="header">
-                <div class="monogram">A&H</div>
+                <div class="header-left">A&H</div>
                 <div class="header-star">✦</div>
-                <div class="date-top">OCTOBER • MMXXVI</div>
+                <div class="header-right">OCTOBER • MMXXVI</div>
             </header>
-
-            <!-- Guest Personal Greeting -->
-            <div id="guest-welcome-box" class="guest-welcome-card hidden">
-                <p class="guest-text">Dear <span id="guest-name-display">Guest</span>,</p>
-                <p class="guest-sub">You are warmly invited to celebrate the wedding of Ajaz & Haram.</p>
-            </div>
 
             <!-- Bismillah & Quran Verse -->
             <section class="section verse-section">
                 <p class="arabic-text">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
-                <p class="translation">"And among His signs is that He created for you mates from among yourselves, that you may find tranquility in them."</p>
-                <p class="surah">- SURAH AR-RUM 30:21 -</p>
+                <p class="translation">"And among His signs is that He created for you mates from among yourselves, that you may find tranquility in them"</p>
+                <p class="surah">— Surah Ar-Rum 30:21 —</p>
             </section>
+
+            <div class="gold-line"></div>
+
+            <!-- Guest Greeting -->
+            <div id="guest-welcome-box" class="guest-welcome-card hidden">
+                <p id="guest-name-display" class="guest-text">Dear Guest,</p>
+            </div>
 
             <!-- Couple Section -->
             <section class="section couple-section">
-                <span class="sub-title">WITH THE BLESSINGS OF ALLAH,<br>WE CORDIALLY INVITE YOU TO THE WEDDING OF</span>
                 <h1 class="calligraphy-title">Ajaz Dalkhaniya</h1>
                 <div class="weds">✦ weds ✦</div>
                 <h1 class="calligraphy-title">Haram Khatri</h1>
             </section>
 
-            <!-- Event 01: Nikah Ceremony -->
+            <!-- Stars Divider -->
+            <div class="three-stars">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+            <!-- Event Date & Function Top Summary -->
+            <div class="wedding-summary">
+                <p class="sum-date">SATURDAY • 10 OCTOBER 2026</p>
+                <p class="sum-func">WEDDING FUNCTION • 8:00 PM</p>
+                <p class="sum-loc">Khar West, Mumbai</p>
+            </div>
+
+            <!-- Detailed Event 01: Nikah Ceremony -->
             <section class="section event-section">
                 <div class="event-card">
                     <div class="gold-header-banner">✦ WEDDING FUNCTION ✦</div>
@@ -99,13 +109,12 @@
                         <div class="three-btn-grid">
                             <a href="https://maps.google.com/?q=Vishnu+Prasad+Hall+Off+Linking+Rd+Near+Rajkumar+Jewellers+Khar+West+Mumbai+Maharashtra+400052" target="_blank" class="grid-btn">LOCATION</a>
                             <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ajaz+%26+Haram+Nikah&dates=20261010T143000Z/20261010T183000Z&location=Vishnu+Prasad+Hall+Khar+West+Mumbai" target="_blank" class="grid-btn">GOOGLE CAL</a>
-                            <a href="#" class="grid-btn">APPLE CAL</a>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Event 02: Dawat-e-Walima -->
+            <!-- Detailed Event 02: Dawat-e-Walima -->
             <section class="section event-section">
                 <div class="event-card">
                     <div class="gold-header-banner">✦ WEDDING RECEPTION ✦</div>
@@ -132,7 +141,6 @@
                         <div class="three-btn-grid">
                             <a href="https://maps.google.com/?q=Maharaja+Banquet+Hall+Silvassa+Road+Vapi" target="_blank" class="grid-btn">LOCATION</a>
                             <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ajaz+%26+Haram+Walima&dates=20261013T143000Z/20261013T183000Z&location=Maharaja+Banquet+Hall+Vapi" target="_blank" class="grid-btn">GOOGLE CAL</a>
-                            <a href="#" class="grid-btn">APPLE CAL</a>
                         </div>
                     </div>
                 </div>
