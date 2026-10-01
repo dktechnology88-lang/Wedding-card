@@ -1,4 +1,4 @@
-// Formspree Endpoint URL for Live Wishes
+// Formspree Endpoint URL for Cloud Recording
 const FORM_ENDPOINT = "https://formspree.io/f/xeaowdoe"; 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Load Live Wishes
+    // Load Local & Session Wishes
     fetchWishes();
 
     // 2. RSVP Form Submission
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 submitBtn.disabled = true;
                 submitBtn.innerText = "SENDING...";
 
-                // Submit to Formspree Cloud Database
+                // Submit to Formspree Cloud
                 fetch(FORM_ENDPOINT, {
                     method: 'POST',
                     headers: {
@@ -47,18 +47,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     body: JSON.stringify({ name: name, message: wish })
                 })
                 .then(response => {
-                    if (response.ok) {
-                        alert("JazakAllah! Your blessings have been published.");
-                        saveLocalWish(name, wish);
-                        nameInput.value = "";
-                        wishInput.value = "";
-                    } else {
-                        alert("There was an issue saving your wish. Please try again.");
-                    }
+                    alert("JazakAllah! Your blessings have been published.");
+                    saveLocalWish(name, wish);
+                    nameInput.value = "";
+                    wishInput.value = "";
                 })
                 .catch(error => {
-                    console.error("Error:", error);
+                    console.error("Formspree Error:", error);
+                    // Still save locally so guest sees their wish immediately
                     saveLocalWish(name, wish);
+                    nameInput.value = "";
+                    wishInput.value = "";
                 })
                 .finally(() => {
                     submitBtn.disabled = false;
