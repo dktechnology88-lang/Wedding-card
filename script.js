@@ -1,7 +1,7 @@
-// URL se mehmaan ka naam nikalna (?to=GuestName)
+// URL se Guest Name Read karna (?to=GuestName)
 document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
-    const guestName = urlParams.get('to');
+    const guestName = urlParams.get('to') || urlParams.get('guest');
 
     if (guestName) {
         const formattedName = decodeURIComponent(guestName);
@@ -10,35 +10,35 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Envelope Opening Function
+// ENVELOPE OPENING FUNCTION
 function openEnvelope() {
     const wrapper = document.getElementById("envelope-wrapper");
     const mainContent = document.getElementById("main-content");
     const audio = document.getElementById("bg-music");
 
-    // 1. Envelope animation start
     wrapper.classList.add("open");
 
-    // 2. Play Background Music
     if (audio) {
         audio.play().then(() => {
-            document.getElementById("audio-icon").innerText = "❚❚";
+            const icon = document.getElementById("audio-icon");
+            if (icon) icon.innerText = "❚❚";
         }).catch(() => {
-            console.log("Audio play blocked by browser.");
+            console.log("Audio play deferred");
         });
     }
 
-    // 3. Envelope fade out and show main website
     setTimeout(() => {
-        wrapper.classList.add("fade-out");
+        wrapper.style.opacity = "0";
+        wrapper.style.transition = "opacity 0.5s ease";
+        
         setTimeout(() => {
             wrapper.style.display = "none";
             mainContent.classList.remove("hidden");
-        }, 800);
-    }, 1200);
+        }, 500);
+    }, 800);
 }
 
-// Audio Toggle (Play / Pause)
+// Audio Play / Pause Toggle
 function toggleAudio() {
     const audio = document.getElementById("bg-music");
     const icon = document.getElementById("audio-icon");
@@ -65,7 +65,7 @@ document.addEventListener("click", function (e) {
 });
 
 document.addEventListener("touchstart", function (e) {
-    if (e.touches.length > 0) {
+    if (e.touches && e.touches.length > 0) {
         createSparkle(e.touches[0].clientX, e.touches[0].clientY);
     }
 });
