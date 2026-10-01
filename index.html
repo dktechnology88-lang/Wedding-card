@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajaz & Haram — Wedding Invitation</title>
 
-    <!-- WhatsApp & Social Media Preview Meta Tags (For Image & Title) -->
+    <!-- Social Preview Metadata -->
     <meta property="og:title" content="Ajaz & Haram — Wedding Invitation" />
     <meta property="og:description" content="With the blessings of Allah, you are cordially invited to celebrate our wedding." />
     <meta property="og:image" content="https://dktechnology88-lang.github.io/Wedding-card/preview.jpg" />
     <meta property="og:type" content="website" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Google Fonts for Calligraphy & Modern Serif -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ENVELOPE OPENING ANIMATION SCREEN -->
+    <!-- 1. ENVELOPE OPENING SCREEN -->
     <div id="envelope-screen" class="envelope-wrapper" onclick="openEnvelope()">
         <div class="envelope-card">
             <div class="envelope-border">
-                <p id="guest-greeting-envelope" class="env-guest-name"></p>
+                <p id="guest-greeting-envelope" class="env-guest-name">Dear Guest</p>
                 <p class="env-couple">AJAZ DALKHANIYA</p>
                 <div class="gold-wax-seal">
                     <span>A&H</span>
@@ -34,7 +35,7 @@
         </div>
     </div>
 
-    <!-- MAIN WEDDING WEBSITE -->
+    <!-- 2. MAIN WEBSITE -->
     <div id="main-content" class="main-wrapper hidden">
 
         <audio id="bg-music" loop>
@@ -42,35 +43,46 @@
         </audio>
 
         <div class="container">
-            <!-- Header -->
+
+            <!-- Top Header Monogram -->
             <header class="header">
                 <div class="monogram">A&H</div>
                 <div class="header-star">✦</div>
                 <div class="date-top">OCTOBER • MMXXVI</div>
             </header>
 
-            <!-- Personalized Guest Welcome Note -->
+            <!-- Guest Personal Greeting -->
             <div id="guest-welcome-box" class="guest-welcome-card hidden">
                 <p class="guest-text">Dear <span id="guest-name-display">Guest</span>,</p>
-                <p class="guest-sub">You are warmly invited to the wedding of Ajaz & Haram.</p>
+                <p class="guest-sub">You are warmly invited to celebrate the wedding of Ajaz & Haram.</p>
             </div>
 
-            <!-- Bismillah & Surah -->
+            <!-- Bismillah & Quran Verse -->
             <section class="section verse-section">
                 <p class="arabic-text">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
                 <p class="translation">"And among His signs is that He created for you mates from among yourselves, that you may find tranquility in them."</p>
                 <p class="surah">- SURAH AR-RUM 30:21 -</p>
             </section>
 
-            <!-- Couple Name Announcement -->
+            <!-- Couple Section -->
             <section class="section couple-section">
                 <span class="sub-title">WITH THE BLESSINGS OF ALLAH,<br>WE CORDIALLY INVITE YOU TO THE WEDDING OF</span>
-                <h1 class="main-title">Ajaz Dalkhaniya</h1>
+                <h1 class="calligraphy-title">Ajaz Dalkhaniya</h1>
                 <div class="weds">✦ weds ✦</div>
-                <h1 class="main-title">Haram Khatri</h1>
+                <h1 class="calligraphy-title">Haram Khatri</h1>
             </section>
 
-            <!-- Event 01: Nikah -->
+            <!-- Single Photo / Couple Banner -->
+            <section class="section photo-section">
+                <div class="photo-frame">
+                    <img src="preview.jpg" alt="Ajaz & Haram" onerror="this.style.display='none'; document.getElementById('photo-fallback').style.display='block';">
+                    <div id="photo-fallback" class="photo-placeholder" style="display:none;">
+                        <span>✦ A & H ✦</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event 01: Nikah Ceremony -->
             <section class="section event-section">
                 <div class="event-card">
                     <div class="gold-header-banner">✦ WEDDING FUNCTION ✦</div>
@@ -136,54 +148,58 @@
                 </div>
             </section>
 
-            <!-- Family Details -->
+            <!-- Family Details Cards -->
             <section class="section family-section">
+                <!-- Groom Family Card -->
                 <div class="family-card">
                     <h3 class="family-role">THE GROOM</h3>
-                    <h2 class="person-name">Ajaz Dalkhaniya</h2>
+                    <h2 class="calligraphy-name">Ajaz Dalkhaniya</h2>
                     <p class="relation">Son of</p>
                     <p class="parent-names">Mr. Salim Dalkhaniya & Mrs. Shamim Dalkhaniya</p>
 
                     <h4 class="sub-heading">SIBLINGS</h4>
-                    <p>Riyaz • Ayaz • Imtiyaz</p>
-                    <p>Marhooma Nafisa Bano • Samrin Bano • Rabiya Bano</p>
+                    <p class="detail-text">Riyaz • Ayaz • Imtiyaz</p>
+                    <p class="detail-text">Marhooma Nafisa Bano • Samrin Bano • Rabiya Bano</p>
 
                     <h4 class="sub-heading">THE LITTLE ONES</h4>
-                    <p>Ruhaan • Ahmad • Azlaan • Inaya</p>
+                    <p class="detail-text">Ruhaan • Ahmad • Azlaan • Inaya</p>
 
                     <h4 class="sub-heading">GRAND PARENTS</h4>
-                    <p>Janab Marhoom Ismail Dalkhaniya</p>
-                    <p>Marhooma Rabiya Dalkhaniya</p>
+                    <p class="detail-text">Janab Marhoom Ismail Dalkhaniya</p>
+                    <p class="detail-text">Marhooma Rabiya Dalkhaniya</p>
                 </div>
 
+                <!-- Bride Family Card -->
                 <div class="family-card">
                     <h3 class="family-role">THE BRIDE</h3>
-                    <h2 class="person-name">Haram Khatri</h2>
+                    <h2 class="calligraphy-name">Haram Khatri</h2>
                     <p class="relation">Daughter of</p>
                     <p class="parent-names">Marhoom Javed Khatri</p>
                 </div>
 
+                <!-- Inviter Details -->
                 <div class="inviter-details">
                     <p class="from-text">With Compliments From:</p>
-                    <h4>Dalkhaniya Family, Relatives & Friends</h4>
+                    <h4 class="compliments-title">Dalkhaniya Family, Relatives & Friends</h4>
                     <p class="contact-person">Contact: Mr. Riyaz Dalkhaniya<br>Mob.: +91 9662750766</p>
                 </div>
             </section>
 
-            <!-- RSVP & Wishes -->
+            <!-- RSVP Form Section -->
             <section class="section rsvp-section">
-                <div class="event-card">
-                    <h3 class="card-event-title">RSVP & Wishes</h3>
-                    <form id="rsvpForm">
+                <div class="event-card rsvp-card">
+                    <h3 class="card-event-title" style="text-align: center; margin-top: 15px;">RSVP & Wishes</h3>
+                    <form id="rsvpForm" onsubmit="event.preventDefault(); alert('JazakAllah! Your blessings have been sent.');">
                         <input type="text" id="guestName" placeholder="Your Name" required>
                         <textarea id="wishMessage" placeholder="Write your blessings..." required></textarea>
                         <button type="submit" class="submit-btn">SEND BLESSINGS</button>
                     </form>
                 </div>
             </section>
+
         </div>
 
-        <!-- Floating Bottom Controls -->
+        <!-- Floating Controls (WhatsApp & Music Toggle) -->
         <div class="bottom-controls">
             <div class="float-btn wa-btn" onclick="shareOnWhatsApp()">
                 <span>💬</span>
