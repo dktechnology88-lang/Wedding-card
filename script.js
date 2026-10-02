@@ -1,8 +1,44 @@
-// Formspree Endpoint URL for Cloud Recording
+// Formspree Endpoint URL for Live Cloud Sync
 const FORM_ENDPOINT = "https://formspree.io/f/xeaowdoe"; 
 
+// 1. OPEN ENVELOPE FUNCTION (Guaranteed Working)
+function openEnvelope() {
+    var wrapper = document.getElementById("envelope-wrapper");
+    var mainContent = document.getElementById("main-content");
+    var audio = document.getElementById("bg-music");
+
+    if (wrapper) {
+        wrapper.classList.add("open");
+    }
+
+    if (audio) {
+        audio.play().then(function() {
+            var icon = document.getElementById("audio-icon");
+            if (icon) icon.innerText = "❚❚";
+        }).catch(function(e) {
+            console.log("Audio play blocked");
+        });
+    }
+
+    setTimeout(function() {
+        if (wrapper) {
+            wrapper.style.opacity = "0";
+            wrapper.style.transition = "opacity 0.5s ease";
+            
+            setTimeout(function() {
+                wrapper.style.display = "none";
+                if (mainContent) {
+                    mainContent.classList.remove("hidden");
+                    mainContent.style.display = "block";
+                }
+            }, 500);
+        }
+    }, 800);
+}
+
+// 2. DOM CONTENT LOADED HANDLER
 document.addEventListener("DOMContentLoaded", function () {
-    // 1. Guest Name from URL (?to=GuestName)
+    // Guest Name from URL (?to=GuestName)
     const urlParams = new URLSearchParams(window.location.search);
     const guestName = urlParams.get('to') || urlParams.get('guest');
 
@@ -17,10 +53,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Load Local & Session Wishes
+    // Load Wishes
     fetchWishes();
 
-    // 2. RSVP Form Submission
+    // Form Submit Handler
     const rsvpForm = document.getElementById('rsvpForm');
     if (rsvpForm) {
         rsvpForm.addEventListener('submit', function (e) {
@@ -46,20 +82,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     },
                     body: JSON.stringify({ name: name, message: wish })
                 })
-                .then(response => {
+                .then(function() {
                     alert("JazakAllah! Your blessings have been published.");
                     saveLocalWish(name, wish);
                     nameInput.value = "";
                     wishInput.value = "";
                 })
-                .catch(error => {
-                    console.error("Formspree Error:", error);
-                    // Still save locally so guest sees their wish immediately
+                .catch(function(error) {
+                    console.error("Error:", error);
                     saveLocalWish(name, wish);
                     nameInput.value = "";
                     wishInput.value = "";
                 })
-                .finally(() => {
+                .finally(function() {
                     submitBtn.disabled = false;
                     submitBtn.innerText = "SEND BLESSINGS";
                 });
@@ -85,7 +120,7 @@ function fetchWishes() {
 
     if (wishes.length > 0) {
         wishesList.innerHTML = "";
-        wishes.forEach(item => {
+        wishes.forEach(function(item) {
             const wishCard = document.createElement('div');
             wishCard.className = 'single-wish-card';
             wishCard.innerHTML = `
@@ -109,39 +144,6 @@ function escapeHtml(text) {
         .replace(/'/g, "&#039;");
 }
 
-// Envelope Opening Function
-function openEnvelope() {
-    const wrapper = document.getElementById("envelope-wrapper");
-    const mainContent = document.getElementById("main-content");
-    const audio = document.getElementById("bg-music");
-
-    if (wrapper) wrapper.classList.add("open");
-
-    if (audio) {
-        audio.play().then(() => {
-            const icon = document.getElementById("audio-icon");
-            if (icon) icon.innerText = "❚❚";
-        }).catch(() => {
-            console.log("Audio play deferred");
-        });
-    }
-
-    setTimeout(() => {
-        if (wrapper) {
-            wrapper.style.opacity = "0";
-            wrapper.style.transition = "opacity 0.5s ease";
-            
-            setTimeout(() => {
-                wrapper.style.display = "none";
-                if (mainContent) {
-                    mainContent.classList.remove("hidden");
-                    mainContent.style.display = "block";
-                }
-            }, 500);
-        }
-    }, 800);
-}
-
 // Audio Toggle
 function toggleAudio() {
     const audio = document.getElementById("bg-music");
@@ -158,10 +160,11 @@ function toggleAudio() {
     }
 }
 
-// WhatsApp Share Function
+// WhatsApp Share Function with Royal Message
 function shareOnWhatsApp() {
     const url = window.location.href;
-    const text = `You are cordially invited to the wedding of Ajaz & Haram! ✦\n\nClick to view invitation:\n${url}`;
+    const text = `بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ\n\n✨ *WEDDING INVITATION* ✨\n\n*Ajaz Dalkhaniya* ✦ *Haram Khatri*\n\nWe cordially invite you to share in our joy as we celebrate our wedding ceremony.\n\n👇 *Click link to open interactive invitation:* \n${url}`;
+    
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
 }
 
@@ -185,7 +188,7 @@ function createSparkle(x, y) {
 
     document.body.appendChild(star);
 
-    setTimeout(() => {
+    setTimeout(function() {
         star.remove();
     }, 800);
 }
